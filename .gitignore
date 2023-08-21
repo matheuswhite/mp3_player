@@ -1,0 +1,4 @@
+sdcard/songs/*
+sdcard/playlist/*
+build/*
+.idea/*
