@@ -1,7 +1,7 @@
 /**
  * @file song.c
  * @author Matheus T. dos Santos (matheus.santos@edge.ufal.br)
- * @brief Implementação do módulo que gerência as músicas
+ * @brief Implementação do módulo que gerencia as músicas
  * @version 0.1.0
  * @date 02/08/23
  *

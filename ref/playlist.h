@@ -12,8 +12,9 @@
 #ifndef MP3_PLAYER_PLAYLIST_H
 #define MP3_PLAYER_PLAYLIST_H
 
-#include <stdlib.h>
 #include <stdbool.h>
+#include <stdlib.h>
+
 #include "song.h"
 
 /**
@@ -32,7 +33,7 @@
 typedef enum repeat_mode {
     REPEAT_MODE_NONE = 0, /**< */
     REPEAT_MODE_PLAYLIST, /**< */
-    REPEAT_MODE_ONE, /**< */
+    REPEAT_MODE_ONE,      /**< */
 } repeat_mode_t;
 
 /**
@@ -42,9 +43,9 @@ typedef struct playlist {
     char name[PLAYLIST_NAME_LEN];      /**< */
     song_t *songs[PLAYLIST_MAX_SONGS]; /**< */
     size_t songs_len;                  /**< */
-    size_t selected_song_index; /**< */
-    bool is_shuffle_en; /**< */
-    repeat_mode_t repeat_mode; /**< */
+    size_t selected_song_index;        /**< */
+    bool is_shuffle_en;                /**< */
+    repeat_mode_t repeat_mode;         /**< */
 } playlist_t;
 
 /**

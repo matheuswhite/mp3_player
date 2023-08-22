@@ -34,6 +34,11 @@ int main()
     char buffer[1024] = {0};
 
 
+    err = mpl_sd_card_init();
+    if (err) {
+        return err;
+    }
+
     for (int i = 0; i < SONG_AMOUNT; ++i) {
         err = mpl_song_load(&all_songs[i], song_names[i]);
         if (err) {

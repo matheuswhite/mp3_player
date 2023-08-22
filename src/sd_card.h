@@ -1,7 +1,7 @@
 /**
  * @file sd_card.h
  * @author Matheus T. dos Santos (matheus.santos@edge.ufal.br)
- * @brief
+ * @brief Definições do módulo que carrega e salva dados no cartão SD
  * @version 0.1.0
  * @date 25/08/23
  *
@@ -18,37 +18,37 @@
 #include <errno.h>
 
 /**
- * @brief
+ * @brief Inicializa o módulo do cartão SD.
  *
- * @return
+ * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
  */
 int mpl_sd_card_init(void);
 
 /**
- * @brief
+ * @brief Carrega dados do cartão SD.
  *
- * @param[in] filepath
- * @param[out] buffer
- * @param buffer_len
- * @return
+ * @param[in] filepath Caminho para o arquivo no cartão SD.
+ * @param[out] buffer Buffer onde os dados lidos serão preenchidos.
+ * @param buffer_len Tamanho do buffer de leitura.
+ * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
  */
 int mpl_sd_card_read(const char *filepath, uint8_t *buffer, size_t buffer_len);
 
 /**
- * @brief
+ * @brief Escreve dados no cartão SD.
  *
- * @param[in] filepath
- * @param[out] buffer
- * @param buffer_len
- * @return
+ * @param[in] filepath Caminho para o arquivo no cartão SD.
+ * @param[in] buffer Referência para os dados de escrita.
+ * @param buffer_len Tamanho do buffer de escrita.
+ * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
  */
 int mpl_sd_card_write(const char *filepath, uint8_t *buffer, size_t buffer_len);
 
 /**
- * @brief
+ * @brief Apaga um arquivo do cartão SD.
  *
  * @param[in] filepath
- * @return
+ * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
  */
 int mpl_sd_card_delete(const char *filepath);
 

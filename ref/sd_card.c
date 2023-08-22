@@ -1,7 +1,7 @@
 /**
  * @file sd_card.c
  * @author Matheus T. dos Santos (matheus.santos@edge.ufal.br)
- * @brief
+ * @brief Implementação do módulo que carrega e salva dados no cartão SD
  * @version 0.1.0
  * @date 02/08/23
  *
@@ -16,14 +16,6 @@ int mpl_sd_card_init(void)
     return 0;
 }
 
-/**
- * @brief
- *
- * @param[in] filepath
- * @param[out] buffer
- * @param buffer_len
- * @return
- */
 int mpl_sd_card_read(const char *filepath, uint8_t *buffer, size_t buffer_len)
 {
     FILE *f = fopen(filepath, "rb");
@@ -39,14 +31,6 @@ int mpl_sd_card_read(const char *filepath, uint8_t *buffer, size_t buffer_len)
     return 0;
 }
 
-/**
- * @brief
- *
- * @param[in] filepath
- * @param[out] buffer
- * @param buffer_len
- * @return
- */
 int mpl_sd_card_write(const char *filepath, uint8_t *buffer, size_t buffer_len)
 {
     FILE *f = fopen(filepath, "wb");
