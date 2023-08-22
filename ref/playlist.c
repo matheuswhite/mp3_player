@@ -118,21 +118,6 @@ int mpl_playlist_load(playlist_t *playlist, char *name, song_t *songs)
     return 0;
 }
 
-int mpl_playlist_delete(playlist_t *playlist)
-{
-    if (playlist == NULL) {
-        return -ENODEV;
-    }
-
-    memset(playlist->songs, 0, sizeof(playlist->songs));
-    playlist->songs_len           = 0;
-    playlist->selected_song_index = 0;
-    playlist->is_shuffle_en       = false;
-    playlist->repeat_mode         = REPEAT_MODE_NONE;
-
-    return 0;
-}
-
 int mpl_playlist_add_song(playlist_t *playlist, song_t *song)
 {
     if (playlist == NULL || song == NULL) {

@@ -45,7 +45,7 @@ int main()
     for (int i = 0; i < ALBUMS_AMOUNT; ++i) {
         start_index = first_songs_indexes[i];
 
-        err = mpl_playlist_load(&albums[i], albums_names[i], all_songs);
+        err = mpl_playlist_load(&albums[i], (char *) albums_names[i], all_songs);
         if (!err) {
             printf("Playlist %s loaded from disk", albums[i].name);
             continue;
@@ -55,7 +55,7 @@ int main()
             return err;
         }
 
-        err = mpl_playlist_new(&albums[i], albums_names[i], &all_songs[start_index]);
+        err = mpl_playlist_new(&albums[i], (char *) albums_names[i], &all_songs[start_index]);
         if (err) {
             printf("[ERR] Cannot create %s playlist: %d\n", albums_names[i], err);
             return err;

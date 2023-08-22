@@ -71,14 +71,6 @@ int mpl_playlist_load(playlist_t *playlist, char *name, song_t *songs);
  * @brief
  *
  * @param playlist
- * @return
- */
-int mpl_playlist_delete(playlist_t *playlist);
-
-/**
- * @brief
- *
- * @param playlist
  * @param song
  * @return
  */
