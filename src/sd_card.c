@@ -3,7 +3,7 @@
  * @author Matheus T. dos Santos (matheus.santos@edge.ufal.br)
  * @brief Implementação do módulo que carrega e salva dados no cartão SD
  * @version 0.1.0
- * @date 25/08/23
+ * @date 02/08/23
  *
  * @copyright Matheus T. dos Santos all rights reserved (c) 2021
  *

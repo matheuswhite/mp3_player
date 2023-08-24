@@ -21,10 +21,10 @@
  *      repeat_mode: RepeatMode,
  *
  *      fn new(name: string, first_song: Song) -> Playlist;
- *      fn load(name: string, songs: Song[]) -> Playlist;
  *      fn add_song(self, song: Song);
  *      fn format(self) -> string;
  *
+ *      fn load(name: string, songs: Song[]) -> Playlist;
  *      fn remove_song(self, name: Song);
  *      fn remove_song_by_index(self, name: Song);
  *      fn selected_song(self) -> Song;
