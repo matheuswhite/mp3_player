@@ -3,7 +3,14 @@
 #include "playlist.h"
 #include "song.h"
 
+/**
+ * @brief Quantidade de músicas
+ */
 #define SONG_AMOUNT 10
+
+/**
+ * @brief Quantidade de álbums
+ */
 #define ALBUMS_AMOUNT 3
 
 int main()
@@ -50,7 +57,7 @@ int main()
     for (int i = 0; i < ALBUMS_AMOUNT; ++i) {
         start_index = first_songs_indexes[i];
 
-        err = mpl_playlist_load(&albums[i], (char *) albums_names[i], all_songs);
+        err = mpl_playlist_load(&albums[i], (char *) albums_names[i], all_songs, SONG_AMOUNT);
         if (!err) {
             printf("Playlist %s loaded from disk", albums[i].name);
             continue;

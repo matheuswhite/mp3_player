@@ -57,7 +57,7 @@ typedef struct song {
 int mpl_song_load(song_t *song, const char *name);
 
 /**
- * @brief Imprime as informações da música em um buffer.
+ * @brief Formata as informações da música em um buffer.
  *
  * @param[in] song Referência para a música.
  * @param[out] buffer Buffer onde as informações da música serão imprimidas.

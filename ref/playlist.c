@@ -11,6 +11,9 @@
 
 #include "playlist.h"
 
+/**
+ * @brief Macro para obter a representação do modo de repetição
+ */
 #define REPEAT_MODE_STR(mode) \
     (((mode) == REPEAT_MODE_PLAYLIST) ? "P" : (((mode) == REPEAT_MODE_ONE) ? "1" : " "))
 
@@ -24,17 +27,35 @@
  */
 #define FILEPATH_LEN 256
 
+/**
+ * @brief Estrutura com os campos globais da playlist
+ */
 static struct {
-    uint8_t buffer[BUFFER_LEN];
-    char filepath[FILEPATH_LEN];
+    uint8_t buffer[BUFFER_LEN]; /**< Buffer de leitura e escrita das playlists */
+    char filepath[FILEPATH_LEN]; /**< Caminho do arquivo da playlist. */
 } self = {
     .buffer   = {0},
     .filepath = {0},
 };
 
+/**
+ * @brief Armazena a playlist no disco.
+ *
+ * @param[in] playlist Referência da playlist.
+ * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
+ */
 static int save_playlist(playlist_t *playlist);
 
-static int find_song_by_index(song_t *songs, char *name, size_t *song_index);
+/**
+ * @brief Encontra o índice da música pelo nome da música.
+ *
+ * @param[in] songs Lista com todas as músicas presentes no disco.
+ * @param songs_len Quantidade de músicas na lista de todas as músicas.
+ * @param[in] name Nome da música para a busca.
+ * @param[out] song_index Índice da música encontrada.
+ * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
+ */
+static int find_song_by_index(song_t *songs, size_t songs_len, char *name, size_t *song_index);
 
 int mpl_playlist_new(playlist_t *playlist, char *name, song_t *first_song)
 {
@@ -58,7 +79,7 @@ int mpl_playlist_new(playlist_t *playlist, char *name, song_t *first_song)
     return save_playlist(playlist);
 }
 
-int mpl_playlist_load(playlist_t *playlist, char *name, song_t *songs)
+int mpl_playlist_load(playlist_t *playlist, char *name, song_t *songs, size_t songs_len)
 {
     if (playlist == NULL || name == NULL || songs == NULL) {
         return -ENODEV;
@@ -72,8 +93,8 @@ int mpl_playlist_load(playlist_t *playlist, char *name, song_t *songs)
     uint8_t *cursor = self.buffer;
     char song_name[SONG_NAME_LEN + 1];
     size_t song_index;
-    size_t songs_len;
-    size_t songs_cursor = 0;
+    size_t playlist_songs_len;
+    size_t songs_cursor;
 
     memset(playlist, 0, sizeof(playlist_t));
     memset(self.filepath, 0, FILEPATH_LEN);
@@ -90,13 +111,13 @@ int mpl_playlist_load(playlist_t *playlist, char *name, song_t *songs)
 
     memcpy(&playlist->songs_len, cursor, sizeof(playlist->songs_len));
     cursor += sizeof(playlist->songs_len);
-    songs_len = playlist->songs_len;
+    playlist_songs_len = playlist->songs_len;
 
-    for (int i = 0; i < songs_len; ++i) {
+    for (int i = 0; i < playlist_songs_len; ++i) {
         strcpy(song_name, (char *) cursor);
         cursor += strlen(song_name) + 1;
 
-        err = find_song_by_index(songs, song_name, &song_index);
+        err = find_song_by_index(songs, songs_len, song_name, &song_index);
         if (err) {
             printf("[WRN] Song %s is in the playlist %s, but the song list there is no "
                    "song with this name\n",
@@ -209,11 +230,6 @@ int mpl_playlist_format(playlist_t *playlist, char *buffer, size_t buffer_len)
 
 static int save_playlist(playlist_t *playlist)
 {
-    // TODO fazer
-    if (playlist == NULL) {
-        return -ENODEV;
-    }
-
     int err;
     uint8_t *cursor = self.buffer;
 
@@ -246,9 +262,17 @@ static int save_playlist(playlist_t *playlist)
     return 0;
 }
 
-static int find_song_by_index(song_t *songs, char *name, size_t *song_index)
+static int find_song_by_index(song_t *songs, size_t songs_len, char *name, size_t *song_index)
 {
-    // TODO
+    song_t *song = NULL;
 
-    return -EPROTO;
+    for (int i = 0; i < songs_len; ++i) {
+        song = &songs[i];
+        if (strcmp(song->name, name) == 0) {
+            *song_index = i;
+            return 0;
+        }
+    }
+
+    return -ENOENT;
 }
