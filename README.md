@@ -1,6 +1,6 @@
 ## Professor
 
-> Matheus T. dos Santos 
+> Matheus T. dos Santos
 
 - Engenheiro de Computação (formado pela UFAL);
 - Líder Técnico da área de Firmware do EDGE;
@@ -9,7 +9,7 @@
 ## Ferramentas
 
 - CLion;
-    - Licença estudantil com email do IC ou do EDGE.
+  - Licença estudantil com email do IC ou do EDGE.
 - Vs Code (Não usem);
 - NeoVim (Se tiverem tempo).
 
@@ -19,9 +19,18 @@
 - Vamos focar no aspecto engenharia de software para embarcados;
 - Não vamos fazer interações com o hardware nessa aula;
 - Vamos construir uma parte da lógica de um player MP3 (sd_card, song, playlists);
-    - Os dados usados nas músicas não são MP3 reais;
-    - Desta forma, não vamos tocar as músicas.
+  - Os dados usados nas músicas não são MP3 reais;
+  - Desta forma, não vamos tocar as músicas.
 
 ## Pré-requisitos
 
 - Como está o conhecimento de vocês sobre ponteiros?
+
+## Como funciona um player MP3
+
+- Músicas
+- Playlist -> Onde as músicas são agrupadas
+- Arquivos -> Onde as músicas ficam armazenadas no dispositivo
+    - Cartão SD
+    - Pendrive
+    - SSD

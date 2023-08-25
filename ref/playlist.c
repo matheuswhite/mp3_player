@@ -15,7 +15,7 @@
  * @brief Macro para obter a representação do modo de repetição
  */
 #define REPEAT_MODE_STR(mode) \
-    (((mode) == REPEAT_MODE_PLAYLIST) ? "P" : (((mode) == REPEAT_MODE_ONE) ? "1" : " "))
+    (((mode) == REPEAT_MODE_PLAYLIST) ? "P" : (((mode) == REPEAT_MODE_SINGLE) ? "1" : " "))
 
 /**
  * @brief Tamanho do buffer de escrita e leitura da playlist

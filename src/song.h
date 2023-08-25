@@ -41,14 +41,14 @@
 typedef struct song {
     char name[SONG_NAME_LEN + 1];     /**< Nome da música */
     char artist[SONG_ARTIST_LEN + 1]; /**< Nome do artista da música */
-    uint16_t duration_secs;           /** Duração da música em segundos */
+    uint16_t duration_secs;           /**< Duração da música em segundos */
     uint16_t data_len;                /**< Tamanho do buffer com o áudio */
-    uint8_t data[SONG_DATA_MAX_LEN];  /** Buffer com o áudio da música (em bytes)
+    uint8_t data[SONG_DATA_MAX_LEN];  /**< Buffer com o áudio da música (em bytes)
                                        * codificada em MP3 */
 } song_t;
 
 /**
- * @brief Carrega uma de música do disco.
+ * @brief Carrega uma música do disco.
  *
  * @param[out] song Referência para a música.
  * @param[in] name Nome da música.

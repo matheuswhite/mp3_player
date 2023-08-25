@@ -38,7 +38,7 @@
  * RepeatMode {
  *      None,
  *      Playlist,
- *      One,
+ *      Single,
  * }
  * */
 

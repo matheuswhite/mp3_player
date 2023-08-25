@@ -35,7 +35,7 @@ typedef enum repeat_mode {
                              pausada. */
     REPEAT_MODE_PLAYLIST, /**< Repetir a playlist. Após a última música é reproduzida a
                              primeira música da playlist. */
-    REPEAT_MODE_ONE,      /**< A música atual é repetida ao termino da reprodução. */
+    REPEAT_MODE_SINGLE,   /**< A música atual é repetida ao termino da reprodução. */
 } repeat_mode_t;
 
 /**
@@ -117,7 +117,8 @@ int mpl_playlist_selected_song(playlist_t *playlist, song_t *song);
 int mpl_playlist_prev_song(playlist_t *playlist);
 
 /**
- * @brief Seleciona a próxima música da playlist, respeitando o modo de repetição e o modo aleatório.
+ * @brief Seleciona a próxima música da playlist, respeitando o modo de repetição e o modo
+ * aleatório.
  *
  * @param[in] playlist Referência para a playlist.
  * @return int 0 em caso de sucesso e um inteiro negativo em caso de falha.
